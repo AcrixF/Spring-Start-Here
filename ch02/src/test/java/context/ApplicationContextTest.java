@@ -18,21 +18,15 @@ public class ApplicationContextTest {
     public void setup() {
         context = new AnnotationConfigApplicationContext(ProjectConfig.class);
     }
-
-   @Test
-   void contextThrowsAnExceptionWhenMultipleBeansOfTheSameInstance() {
-        assertThrows(NoUniqueBeanDefinitionException.class, () -> context.getBean(Parrot.class));
-   }
-
-   @Test
-   void contextReturnsExpectedBeanWhenInstanceAndNameAreProvided() {
-        Parrot miki = context.getBean("parrot4", Parrot.class);
-        assertThat(miki).isNotNull()
+    @Test
+    void contextReturnsExpectedBeanWhenInstanceAndNameAreProvided() {
+        Parrot moko = context.getBean("parrot4", Parrot.class);
+        assertThat(moko).isNotNull()
                 .isExactlyInstanceOf(Parrot.class)
-                .hasFieldOrPropertyWithValue("name", "Miki");
-   }
+                .hasFieldOrPropertyWithValue("name", "Moko");
+    }
 
-   @Test
+    @Test
     void contextReturnsExpectedBeansWhenUsingBeanNames() {
        Parrot koko = context.getBean("Koko", Parrot.class);
        Parrot miki = context.getBean("Miki", Parrot.class);
@@ -41,6 +35,14 @@ public class ApplicationContextTest {
        assertThat(koko).isNotNull();
        assertThat(miki).isNotNull();
        assertThat(riki).isNotNull();
+    }
+
+    @Test
+    void contextReturnsBeanMarkedAsPrimaryWhenNoBeanNameProvided() {
+        Parrot parrot = context.getBean(Parrot.class);
+        assertThat(parrot).isNotNull()
+                .isExactlyInstanceOf(Parrot.class)
+                .hasFieldOrPropertyWithValue("name", "Riki");
    }
 
 }
