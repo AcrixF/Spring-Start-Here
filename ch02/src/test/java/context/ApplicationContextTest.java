@@ -16,11 +16,12 @@ public class ApplicationContextTest {
     public void setup() {
         context = new AnnotationConfigApplicationContext(ProjectConfig.class);
     }
+
     @Test
     void contextReturnsExpectedBeanWhenUsingComponentStereotypeAnnotation() {
         Parrot parrot = context.getBean("parrot", Parrot.class);
         assertThat(parrot).isNotNull()
                 .isExactlyInstanceOf(Parrot.class)
-                .hasFieldOrPropertyWithValue("name", null);
+                .hasFieldOrPropertyWithValue("name", "Kiki");
     }
 }
