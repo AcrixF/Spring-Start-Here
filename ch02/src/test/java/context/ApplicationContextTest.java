@@ -18,8 +18,15 @@ public class ApplicationContextTest {
     }
 
     @Test
-    void contextReturnsExpectedBeanWhenUsingComponentStereotypeAnnotation() {
-        Parrot parrot = context.getBean("parrot", Parrot.class);
+    void contextReturnsExpectedBeanWhenUsingRegisterBeanMethod() {
+
+        context.registerBean("parrot1",
+                Parrot.class,
+                () -> Parrot.builder().name("Kiki").build(),
+                beanDefinition -> beanDefinition.setPrimary(true));
+
+        Parrot parrot = context.getBean(Parrot.class);
+
         assertThat(parrot).isNotNull()
                 .isExactlyInstanceOf(Parrot.class)
                 .hasFieldOrPropertyWithValue("name", "Kiki");

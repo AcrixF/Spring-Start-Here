@@ -1,23 +1,16 @@
 package model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-
-@Component
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Parrot {
     private String name;
-
-    @PostConstruct
-    public void init() {
-        this.name = "Kiki";
-    }
 }
