@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Getter
 @Setter
@@ -13,6 +14,8 @@ import lombok.Setter;
 @Builder
 public class Person {
 
-    private String name;
+    private String name = "Ella";
+
+    @Autowired
     private Parrot parrot;
 }
