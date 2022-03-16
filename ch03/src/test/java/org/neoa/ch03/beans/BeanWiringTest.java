@@ -17,7 +17,7 @@ public class BeanWiringTest {
     }
 
     @Test
-    public void contextReturnsBeansWiredUsingAutowireToInjectTheValuesThroughTheClassFields() {
+    public void contextReturnsBeansWiredUsingAutowireToInjectTheValuesThroughTheConstructor() {
 
         Person person = context.getBean(Person.class);
 
