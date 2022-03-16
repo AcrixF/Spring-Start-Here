@@ -17,7 +17,7 @@ public class BeanWiringTest {
     }
 
     @Test
-    public void contextReturnsBeansDefinedInConfigurationFile() {
+    public void contextReturnsBeansWiredUsingTheBeanAnnotatedMethodsParameters() {
 
         Parrot miki = context.getBean("miki", Parrot.class);
         Person person = context.getBean(Person.class);

@@ -11,17 +11,17 @@ import org.springframework.context.annotation.Configuration;
 public class ProjectConfig {
 
     @Bean
-    public Person person() {
-        Person person = new Person();
-        person.setName("Ella");
-        person.setParrot(miki());
-        return person;
-    }
-
-    @Bean
     public Parrot miki() {
         Parrot miki = new Parrot();
         miki.setName("Miki");
         return miki;
+    }
+
+    @Bean
+    public Person person(Parrot parrot) {
+        Person person = new Person();
+        person.setName("Ella");
+        person.setParrot(parrot);
+        return person;
     }
 }
