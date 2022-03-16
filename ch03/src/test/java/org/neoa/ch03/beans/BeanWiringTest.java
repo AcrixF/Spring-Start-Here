@@ -19,11 +19,7 @@ public class BeanWiringTest {
     @Test
     public void contextReturnsBeansWiredUsingAutowireToInjectTheValuesThroughTheClassFields() {
 
-        Parrot miki = context.getBean("miki", Parrot.class);
         Person person = context.getBean(Person.class);
-
-        assertThat(miki).isNotNull()
-                .hasFieldOrPropertyWithValue("name", "Miki");
 
         assertThat(person).isNotNull();
         assertThat(person.getParrot()).isNotNull();
