@@ -3,12 +3,9 @@ package org.neoa.ch03.beans;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.neoa.ch03.config.ProjectConfig;
-import org.springframework.beans.factory.BeanCurrentlyInCreationException;
-import org.springframework.beans.factory.UnsatisfiedDependencyException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class BeanWiringTest {
 
@@ -20,7 +17,7 @@ public class BeanWiringTest {
     }
 
     @Test
-    public void springContextReturnsBeanThatWhichNameMatchesTheOneSpecifiedInTheParamMethod() {
+    public void springContextReturnsBeanSpecifiedInQualifierAnnotation() {
         Person person = context.getBean(Person.class);
 
         assertThat(person).isNotNull()
