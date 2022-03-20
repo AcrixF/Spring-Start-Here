@@ -25,12 +25,4 @@ public class ProjectConfig {
         return parrot;
     }
 
-    @Bean
-    public Person person(@Qualifier("miki") Parrot parrot) {
-        Person person = new Person();
-        person.setName("Marlen");
-        person.setParrot(parrot);
-        return person;
-    }
-
 }
