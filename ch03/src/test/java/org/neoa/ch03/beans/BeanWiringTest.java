@@ -20,8 +20,16 @@ public class BeanWiringTest {
     }
 
     @Test
-    public void springContextThrowsExceptionWhenCircularDependencyFound() {
+    public void springContextReturnsBeanThatWhichNameMatchesTheOneSpecifiedInTheParamMethod() {
+        Person person = context.getBean(Person.class);
 
-       assertThatExceptionOfType(UnsatisfiedDependencyException.class).isThrownBy(() -> context.start());
+        assertThat(person).isNotNull()
+                .satisfies(p -> {
+                   assertThat(p.getName()).isNotEmpty()
+                           .isEqualTo("Marlen");
+                   assertThat(p.getParrot())
+                           .isNotNull()
+                           .hasFieldOrPropertyWithValue("name", "Miki");
+                });
     }
 }
