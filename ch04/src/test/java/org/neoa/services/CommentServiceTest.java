@@ -28,7 +28,6 @@ public class CommentServiceTest {
     public void springContextReturnsExpectedBeanWithMultipleImplementationsOfAnAbstraction() {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(CommentServiceTestContextConfiguration.class);
-
         CommentService commentService = context.getBean(CommentService.class);
 
         Comment comment = new Comment();
