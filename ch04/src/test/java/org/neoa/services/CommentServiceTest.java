@@ -5,7 +5,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.neoa.model.Comment;
 import org.neoa.proxies.CommentNotificationProxy;
 import org.neoa.proxies.EmailCommentNotificationProxy;
-import org.neoa.repositories.CommentRepository;
 import org.neoa.repositories.DBCommentRepository;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +21,7 @@ public class CommentServiceTest {
     static class CommentServiceTestContextConfiguration {
 
         @Bean
-        public CommentRepository commentRepository() {
+        public DBCommentRepository dbCommentRepository() {
             return new DBCommentRepository();
         }
 
@@ -32,8 +31,8 @@ public class CommentServiceTest {
         }
 
         @Bean
-        public CommentService commentService(CommentRepository commentRepository, CommentNotificationProxy commentNotificationProxy) {
-            return new CommentService(commentRepository, commentNotificationProxy);
+        public CommentService commentService(CommentNotificationProxy commentNotificationProxy) {
+            return new CommentService(commentNotificationProxy);
         }
     }
 

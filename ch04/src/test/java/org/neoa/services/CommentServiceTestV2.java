@@ -13,6 +13,4 @@ public class CommentServiceTestV2 {
         this.context = new AnnotationConfigApplicationContext();
     }
 
-
-
 }
