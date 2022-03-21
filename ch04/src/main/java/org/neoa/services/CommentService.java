@@ -12,11 +12,9 @@ public class CommentService {
     @Autowired
     private CommentRepository commentRepository;
 
-    private final CommentNotificationProxy commentNotificationProxy;
+    @Autowired
+    private CommentNotificationProxy commentNotificationProxy;
 
-    public CommentService( CommentNotificationProxy commentNotificationProxy) {
-        this.commentNotificationProxy = commentNotificationProxy;
-    }
 
     public void publishComment(Comment comment) {
         commentRepository.storeComment(comment);

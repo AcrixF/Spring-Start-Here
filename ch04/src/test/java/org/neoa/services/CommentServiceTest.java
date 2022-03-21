@@ -3,41 +3,29 @@ package org.neoa.services;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.neoa.model.Comment;
-import org.neoa.proxies.CommentNotificationProxy;
-import org.neoa.proxies.EmailCommentNotificationProxy;
-import org.neoa.repositories.DBCommentRepository;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration
 @ExtendWith(SpringExtension.class)
 public class CommentServiceTest {
 
     @Configuration
+    @ComponentScan(basePackages = {"org.neoa.services", "org.neoa.repositories", "org.neoa.proxies"})
     static class CommentServiceTestContextConfiguration {
 
         @Bean
-        public DBCommentRepository dbCommentRepository() {
-            return new DBCommentRepository();
-        }
-
-        @Bean
-        public CommentNotificationProxy commentNotificationProxy() {
-            return new EmailCommentNotificationProxy();
-        }
-
-        @Bean
-        public CommentService commentService(CommentNotificationProxy commentNotificationProxy) {
-            return new CommentService(commentNotificationProxy);
+        public CommentService commentService() {
+            return new CommentService();
         }
     }
 
     @Test
-    public void publishCommentSendNotification() {
+    public void springContextReturnsExpectedBeanWithMultipleImplementationsOfAnAbstraction() {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(CommentServiceTestContextConfiguration.class);
 

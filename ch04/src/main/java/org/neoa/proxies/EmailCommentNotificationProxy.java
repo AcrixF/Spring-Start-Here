@@ -1,7 +1,9 @@
 package org.neoa.proxies;
 
 import org.neoa.model.Comment;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EmailCommentNotificationProxy implements CommentNotificationProxy {
 
     @Override
