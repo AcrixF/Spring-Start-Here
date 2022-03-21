@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 public class CommentService {
 
     @Autowired
-    private CommentRepository commentRepository;
+    public CommentRepository commentRepository;
 
     @Autowired
-    private CommentNotificationProxy commentNotificationProxy;
+    public CommentNotificationProxy commentNotificationProxy;
 
 
     public void publishComment(Comment comment) {

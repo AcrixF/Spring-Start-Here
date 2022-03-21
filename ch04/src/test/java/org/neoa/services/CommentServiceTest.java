@@ -3,12 +3,16 @@ package org.neoa.services;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.neoa.model.Comment;
+import org.neoa.proxies.CommentNotificationProxy;
+import org.neoa.proxies.CommentPushNotificationProxy;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @ContextConfiguration
 @ExtendWith(SpringExtension.class)
@@ -35,5 +39,7 @@ public class CommentServiceTest {
         comment.setAuthor("BM");
 
         commentService.publishComment(comment);
+
+        assertThat(commentService.commentNotificationProxy).isExactlyInstanceOf(CommentPushNotificationProxy.class);
     }
 }
