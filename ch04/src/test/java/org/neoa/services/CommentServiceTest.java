@@ -29,7 +29,7 @@ public class CommentServiceTest {
     }
 
     @Test
-    public void springContextReturnsExpectedBeanWithMultipleImplementationsOfAnAbstraction() {
+    public void springContextReturnsExpectedBeanWithMultipleImplementationsOfAnAbstractionWhenUsingQualifierAnnotation() {
 
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(CommentServiceTestContextConfiguration.class);
         CommentService commentService = context.getBean(CommentService.class);

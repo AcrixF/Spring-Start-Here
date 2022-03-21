@@ -4,6 +4,7 @@ import org.neoa.model.Comment;
 import org.neoa.proxies.CommentNotificationProxy;
 import org.neoa.repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,6 +14,7 @@ public class CommentService {
     public CommentRepository commentRepository;
 
     @Autowired
+    @Qualifier("PUSH")
     public CommentNotificationProxy commentNotificationProxy;
 
 
