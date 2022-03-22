@@ -4,9 +4,9 @@ import org.neoa.model.Comment;
 import org.neoa.proxies.CommentNotificationProxy;
 import org.neoa.proxies.CommentPushNotificationProxy;
 import org.neoa.repositories.CommentRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class CommentService {
 
     private final CommentRepository commentRepository;
