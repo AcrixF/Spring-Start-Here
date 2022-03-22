@@ -5,6 +5,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.neoa.model.Comment;
 import org.neoa.proxies.CommentNotificationProxy;
 import org.neoa.proxies.CommentPushNotificationProxy;
+import org.neoa.proxies.EmailCommentNotificationProxy;
+import org.neoa.repositories.CommentRepository;
+import org.neoa.repositories.DBCommentRepository;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -23,8 +27,23 @@ public class CommentServiceTest {
     static class CommentServiceTestContextConfiguration {
 
         @Bean
+        public CommentNotificationProxy commentPushNotificationProxy() {
+            return new CommentPushNotificationProxy();
+        }
+
+        @Bean
+        public CommentNotificationProxy emailCommentNotificationProxy() {
+            return new EmailCommentNotificationProxy();
+        }
+
+        @Bean
+        public CommentRepository commentRepository() {
+            return new DBCommentRepository();
+        }
+
+        @Bean
         public CommentService commentService() {
-            return new CommentService();
+            return new CommentService(commentRepository(), commentPushNotificationProxy());
         }
     }
 
@@ -40,6 +59,6 @@ public class CommentServiceTest {
 
         commentService.publishComment(comment);
 
-        assertThat(commentService.commentNotificationProxy).isExactlyInstanceOf(CommentPushNotificationProxy.class);
+        assertThat(commentService.isCommentPushNotificationProxyInstance()).isTrue();
     }
 }
