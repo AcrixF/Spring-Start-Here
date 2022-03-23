@@ -19,10 +19,12 @@ public class SingletonScopeTest {
 
     @Configuration
     static class CommentServiceContextConfiguration {
-        @Bean
+
+        /*@Bean
         public CommentService commentService() {
             return new CommentService();
         }
+         */
     }
 
     @BeforeEach

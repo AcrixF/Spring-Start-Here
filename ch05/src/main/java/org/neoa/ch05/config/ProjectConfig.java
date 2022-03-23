@@ -7,8 +7,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ProjectConfig {
 
-    @Bean
+    /*@Bean
     public CommentService commentService() {
         return new CommentService();
     }
+     */
 }
