@@ -8,12 +8,10 @@ import org.neoa.proxies.CommentPushNotificationProxy;
 import org.neoa.proxies.EmailCommentNotificationProxy;
 import org.neoa.repositories.CommentRepository;
 import org.neoa.repositories.DBCommentRepository;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Service;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
