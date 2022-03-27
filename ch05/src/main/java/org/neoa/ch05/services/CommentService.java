@@ -1,20 +1,14 @@
 package org.neoa.ch05.services;
 
-import org.neoa.ch05.repositories.CommentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
+@Log
 @Service
 public class CommentService {
 
-    private final CommentRepository commentRepository;
-
-    @Autowired
-    public CommentService(CommentRepository commentRepository) {
-        this.commentRepository = commentRepository;
-    }
-
-    public CommentRepository getCommentRepository() {
-        return commentRepository;
+    public CommentService() {
+     log.info("CommentService Instance Created!");
     }
 }
+

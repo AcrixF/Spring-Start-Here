@@ -15,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 public class SingletonScopeUsingStereotypeTest {
 
+    /*
     @Configuration
     @ComponentScan(basePackages = {"org.neoa.ch05.services", "org.neoa.ch05.repositories"})
     static class CommentServiceContextConfigurationStereotype {
@@ -37,5 +38,6 @@ public class SingletonScopeUsingStereotypeTest {
 
         assertThat(result).isTrue();
     }
+     */
 
 }
